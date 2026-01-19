@@ -29,24 +29,51 @@ $(document).ready(function() {
 
     });
 
-    var options = {
-			slidesToScroll: 1,
-			slidesToShow: 3,
-			loop: true,
-			infinite: true,
-			autoplay: false,
-			autoplaySpeed: 3000,
+    var options1 = {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 3000,
+    }
+    var options2 = {
+      slidesToScroll: 1,
+      slidesToShow: 4,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 3000,
+    }
+    var options3 = {
+      slidesToScroll: 1,
+      slidesToShow: 3,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 3000,
     }
 
 		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    var carousels1 = bulmaCarousel.attach('.carousel1', options1);
+    var carousels2 = bulmaCarousel.attach('.carousel2', options2);
+    var carousels3 = bulmaCarousel.attach('.carousel3', options3);
 
     // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
+    for(var i = 0; i < carousels1.length; i++) {
+    	carousels1[i].on('before:show', state => {
     		console.log(state);
     	});
+    }
+    for(var i = 0; i < carousels2.length; i++) {
+      carousels2[i].on('before:show', state => {
+        console.log(state);
+      });
+    }
+    for(var i = 0; i < carousels3.length; i++) {
+      carousels3[i].on('before:show', state => {
+        console.log(state);
+      });
     }
 
     // Access to bulmaCarousel instance of an element
