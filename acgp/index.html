@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Beyond Context Bias: Adaptive Instance Placement for Robust 3D Instance Segmentation">
+  <meta name="keywords" content="3DGS, Stylization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beyond Context Bias: Adaptive Instance Placement for Robust 3D Instance Segmentation</title>
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Beyond Context Bias: Adaptive Instance Placement for Robust 3D Instance Segmentation</h1>
+          <!-- <h1 class="title is-3">TPAMI 2025</h1> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yangrongkun.github.io/">Rongkun Yang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              Ye Zhang<sup>1</sup>,</span>
+            <span class="author-block">
+              Longguang Wang<sup>1</sup>,</span>
+            <span class="author-block">
+              Zhiheng Fu<sup>2</sup>,</span>
+            <span class="author-block">
+              Ziru Yu<sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.yulanguo.cn/">Yulan Guo</a><sup>1*</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup> <a href="https://sysu-sail.net/">Spatial Artificial Intelligence Lab</a> , Sun Yat-sen University &nbsp;&nbsp;</span>
+            <span class="author-block"><sup>2</sup> The Spatial Intelligence Group, Hong Kong Polytechnic University, HKSAR,  &nbsp;&nbsp;</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://github.com/SYSU-SAIL/POSITION"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/SYSU-SAIL/POSITION"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/SYSU-SAIL/POSITION"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/Kristen-Z/StylizedGS-Jittor"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Jittor)</span>
+                  </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Teaser. -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div>
+        <img src="../images/position.png" alt="teaser" class="center">
+      </div>
+      <p>
+        Our open-world scene CAD recomposition method POSITION, which takes the captured real 3D scene data as its input, understands the scene semantic spatial layout, and retrieves CAD model from scalable assets to recomposite a high-fidelity 3D scene.
+      </p> 
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+  <!-- <div class="container"> -->
+  
+    <!-- Paper video.
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+
+          <iframe src="https://drive.google.com/file/d/1PuDanf0JnpyCRtiurPIESG80pU_nEBIj/preview" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D scene CAD recomposition aims to reconstruct a given scene by retrieving and assembling CAD models from a database, so as to accurately simulate the geometric properties and spatial arrangement of the original environment. 
+            Recent methods learn this task through training on limited scan-to-CAD annotation data, which hinders their generalization to diverse real-world scenes.
+            In this paper, we propose POSITION, an open-world 3D scene CAD recomposition method to construct the 3D scene with CADs retrieved from an open-set database. 
+            POSITION is designed following a divide-and-conquer strategy. Firstly, we extract open-world multi-modal object representations from a captured 3D scene. Secondly, on top of the  representations, we propose a coarse-to-fine retrieval method to retrieve CADs that are visually, geometrically and semantically match real objects. Thirdly, we present a physically plausible pose alignment method to adjust retrieved CAD models to maintain consistent geometry and layout with the observation. 
+            By decomposing the problem into well-defined subtasks, our approach achieves generalization across various scene types and scalable CAD databases without retraining or fine-tuning.
+            Our approach demonstrates superior CAD recomposition performance on both the Scan2CAD and diverse real-world 3D scene datasets.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Pipeline</h2>
+          <img src="./static/images/pipeline.png" alt="method" style="width:100%; ">
+        <div class="content has-text-justified">
+          <p>
+             <strong>Method Overview</strong>. The captured 3D scene data is first analyzed by an ensemble of state-of-the-art open-world scene understanding models. Subsequently, the identified multi-modal instances undergo individual retrieval processing followed by a joint retrieval refinement stage. Finally, the retrieved CAD models are aligned to the targets in the scene with physically plausible pose optimization.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-fifths-fifths">
+            <h2 class="title is-3">Indoor 3D Scene CAD Recomposition</h2>
+            <div class="publication-video">
+              <video  loop muted playsinline controls style="width: 100%;">
+                <source src="static/videos/replica_comparison.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> 
+    
+
+
+    
+
+<section class="hero is-light is-small">
+  <div class="hero-body" style="background-color: white;">
+    <div class="columns is-centered has-text-centered">
+      <div style="width:100%; text-align:center;">
+        <h2 class="title is-3">Results Gallery</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-small">    <div class="hero-body" style="background-color: white;">               
+    <div class="container is-max-desktop">
+      
+    <div class="columns is-centered has-text-centered">
+        <div style="width:100%; text-align:center;">
+          <h3 class="title is-4">Ego-centric wandering in recomposed CAD scenes of KITTI360</h3>
+        </div>
+    </div>
+
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-fifths-fifths">
+            <!-- <h2 class="title is-3">Comparison of Recomposition</h2> -->
+            <div class="publication-video-kitti360">
+              <video  loop muted playsinline controls style="width: 100%;">
+                <source src="static/videos/kitti360/0000000002_0000000385.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="publication-video-kitti360">
+              <video  loop muted playsinline controls style="width: 100%;">
+                <source src="static/videos/kitti360/0000000353_0000000557.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="publication-video-kitti360">
+              <video  loop muted playsinline controls style="width: 100%;">
+                <source src="static/videos/kitti360/0000000451_0000000633.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <br/>
+      <br/>
+      <div class="columns is-centered has-text-centered">
+        <div style="width:100%; text-align:center;">
+          <h3 class="title is-4">In the wild Test</h3>  
+        </div>
+    </div>
+
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-fifths-fifths">
+            <!-- <h2 class="title is-3">Comparison of Recomposition</h2> -->
+            <div class="publication-video-embodied">
+              <video autoplay loop muted playsinline controls style="width: 100%;">
+                <source src="static/videos/articulation.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p> <strong>1. Simulated Scene for Articulated Interaction</strong> </p>
+            
+            <br/>
+            <div class="publication-video-embodied">
+              <video autoplay loop muted playsinline controls style="width: 100%;">
+                <source src="static/videos/navigation.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p> <strong>2. Simulated Scene for Embodied Navigation</strong> </p>
+            <br/>
+
+            <div class="publication-video">
+              <video autoplay loop muted playsinline controls style="width: 100%;">
+                <source src="static/videos/desktop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p> <strong>3. POSITION integrates with HunYuan3D</strong></p>
+
+
+          </div>
+        </div>
+      </div>
+
+
+      
+      <!-- <h2 class="subtitle has-text-centered">Our results on forward-facing captures</h2> -->
+    </div>
+  </section>
+
+
+
+  <!-- Visualization. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Visualization on the ScanNet++ Dataset</h2>
+          <img src="./static/images/scannetpp.png" alt="method" style="width:100%; ">
+        <div class="content has-text-justified">
+          <p>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Visualization. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Visualization on the Replica Dataset</h2>
+          <img src="./static/images/replica.png" alt="method" style="width:100%; ">
+        <div class="content has-text-justified">
+          <p>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Visualization on the Scannet Dataset</h2>
+          <img src="./static/images/scannetv2.png" alt="method" style="width:100%; ">
+        <div class="content has-text-justified">
+          <p>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<!-- <section class="hero is-light is-small">
+    <div class="hero-body" style="background-color: white;">
+    <div class="container is-max-desktop">
+      
+    <div class="columns is-centered has-text-centered">
+        <div style="width:100%; text-align:center;">
+          <h3 class="title is-4">360<sup>°</sup> Scenes</h3>
+        </div>
+    </div>
+
+      <div class="container is-max-desktop">
+        <div id="results-carousel" class="carousel2 results-carousel">
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop height="100%">
+              <source src="videos/family_73.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop height="100%">
+              <source src="videos/family_48.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop height="100%">
+              <source src="videos/truck_4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop height="100%">
+              <source src="videos/truck_17.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop height="100%">
+              <source src="videos/counter_9.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop height="100%">
+              <source src="videos/room_135.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop height="100%">
+              <source src="videos/garden_10.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">Our results on forward-facing captures</h2> -->
+    <!-- </div>
+  </section> -->
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body" style="background-color: white;">
+    <div class="container is-max-desktop">
+      
+    <div class="columns is-centered has-text-centered">
+        <div style="width:100%; text-align:center;">
+          <h3 class="title is-4">Color Control</h3>
+        </div>
+    </div>
+      <div id="results-carousel" class="carousel3 results-carousel">
+		
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_14_preserve.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_14_12_color.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/orchids.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/orchids_7_preserve.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/orchids_7_26_color.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+</section> -->
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body" style="background-color: white;">
+
+    <div class="columns is-centered has-text-centered">
+        <div style="width:100%; text-align:center;">
+          <h3 class="title is-4">Scale Control</h3>
+        </div>
+    </div>
+
+    <div class="container is-max-desktop">
+        
+      <div id="results-carousel" class="carousel3 results-carousel">
+		
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_133_down.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_133.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_133_up.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/leaves_100_down.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/leaves_100.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/leaves_100_up.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+</section> -->
+<!-- 
+<section class="hero is-light is-small">
+  <div class="hero-body" style="background-color: white;">
+    <div class="columns is-centered has-text-centered">
+      <div style="width:100%; text-align:center;">
+        <h3 class="title is-4">Spatial Control</h3>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div id="spatial-control-carousel" class="carousel3 results-carousel">
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_11_12.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_14_133.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/flower_133_14.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="videos/room_17_15_132.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@@article{zhang2024stylizedgs,
+  title={Stylizedgs: Controllable stylization for 3d gaussian splatting},
+  author={Zhang, Dingxi and Yuan, Yu-Jie and Chen, Zhuoxun and Zhang, Fang-Lue and He, Zhenliang and Shan, Shiguang and Gao, Lin},
+  journal={arXiv preprint arXiv:2404.05220},
+  year={2024}
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+
+    <div class="content has-text-centered">
+      <a class="icon-link"
+        href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" 
+        href="https://github.com/Kristen-Z" 
+        class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+
+            The <a href="https://github.com/nerfies/nerfies.github.io">source code</a> for the website 
+            was taken from Nerfies. We appreciate the authors sharing the templates with us.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
