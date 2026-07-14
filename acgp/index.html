@@ -142,11 +142,11 @@
 
 
 <!-- Teaser. -->
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div>
-        <img src="../images/position.png" alt="teaser" class="center">
+        <img src="static/images/acgp_teaser.png" alt="teaser" class="center">
       </div>
       <p>
         Our open-world scene CAD recomposition method POSITION, which takes the captured real 3D scene data as its input, understands the scene semantic spatial layout, and retrieves CAD model from scalable assets to recomposite a high-fidelity 3D scene.
@@ -154,7 +154,7 @@
 
     </div>
   </div>
-</section>
+</section> -->
 
 
 
@@ -179,6 +179,24 @@
       </div>
     </div> -->
 
+
+
+
+    <!--Overall Pipeline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Pipeline</h2>
+          <img src="./static/images/framework.png" alt="method" style="width:100%; ">
+        <div class="content has-text-justified">
+          <p>
+             <strong>Overall framework of ACGP.</strong>.  Given a 3D scene and an instance database, ACGP selects instances via category-balanced sampling, queries their category-conditioned placement types, and places them at geometrically valid locations using occupancy- and support-aware validation to generate augmented scenes. \textbf{The pseudo-code} on the right summarizes the complete pipeline of instance-level augmented scene generation.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <!-- <div class="column is-four-fifths"> -->
@@ -186,31 +204,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            3D scene CAD recomposition aims to reconstruct a given scene by retrieving and assembling CAD models from a database, so as to accurately simulate the geometric properties and spatial arrangement of the original environment. 
-            Recent methods learn this task through training on limited scan-to-CAD annotation data, which hinders their generalization to diverse real-world scenes.
-            In this paper, we propose POSITION, an open-world 3D scene CAD recomposition method to construct the 3D scene with CADs retrieved from an open-set database. 
-            POSITION is designed following a divide-and-conquer strategy. Firstly, we extract open-world multi-modal object representations from a captured 3D scene. Secondly, on top of the  representations, we propose a coarse-to-fine retrieval method to retrieve CADs that are visually, geometrically and semantically match real objects. Thirdly, we present a physically plausible pose alignment method to adjust retrieved CAD models to maintain consistent geometry and layout with the observation. 
-            By decomposing the problem into well-defined subtasks, our approach achieves generalization across various scene types and scalable CAD databases without retraining or fine-tuning.
-            Our approach demonstrates superior CAD recomposition performance on both the Scan2CAD and diverse real-world 3D scene datasets.
+            3D instance segmentation aims to identify and segment individual object instances in complex 3D scenes, forming a key foundation for scene understanding and embodied interaction.
+            However, existing methods are typically trained on captured static scenes, where object categories are naturally tied to their surrounding contexts. This induces biased category--context associations:  most object categories are often coupled with limited scene contexts, with even narrower contextual coverage for underrepresented categories in long-tailed real-world distributions.
+            Consequently, models may overfit to frequent contexts and generalize poorly to uncommon object--scene layouts. To address this, we propose ACGP, an Adaptive Context- and Geometry-aware Instance Placement
+            framework for robust 3D instance segmentation. ACGP decouples instances from their source scenes and relocates them into diverse yet geometrically plausible target contexts, thereby enriching object--scene contexts beyond dataset-specific layout priors. Additionally, we further incorporate adaptive class-balanced sampling to increase the exposure of underrepresented categories during augmentation. Through efficient context- and geometry-aware placement, ACGP preserves plausible scene geometry and achieves over 300$\times$ faster instance insertion than conventional collision-detection-based methods. Extensive experiments on multiple 3D instance segmentation benchmarks and architectures show that ACGP consistently improves segmentation accuracy and robustness, especially under uncommon object--scene layouts. ACGP establishes new state-of-the-art results on both the ScanNet++ and ScanNet200 test benchmarks, achieving mAP scores of 38.8 and 38.1, respectively. Code is available at: https://github.com/SYSU-SAIL/ACGP
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Pipeline. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <br />
-        <h2 class="title is-3">Pipeline</h2>
-          <img src="./static/images/pipeline.png" alt="method" style="width:100%; ">
-        <div class="content has-text-justified">
-          <p>
-             <strong>Method Overview</strong>. The captured 3D scene data is first analyzed by an ensemble of state-of-the-art open-world scene understanding models. Subsequently, the identified multi-modal instances undergo individual retrieval processing followed by a joint retrieval refinement stage. Finally, the retrieved CAD models are aligned to the targets in the scene with physically plausible pose optimization.
-          </p>
-        </div>
-
-      </div>
-    </div>
+    
 
 
     <section class="section">
