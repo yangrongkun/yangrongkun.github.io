@@ -49,16 +49,20 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
-<body>
+<body class="acgp-page">
 
 
 
-<section class="hero">
+<section class="hero project-hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Beyond Context Bias: Adaptive Instance Placement for Robust 3D Instance Segmentation</h1>
+          <div class="is-size-4 has-text-weight-semibold publication-highlight">
+            <span class="is-block"> Our method achieves new state-of-the-art performance </span>
+            <span class="is-block"> on the <a href="https://kaldir.vc.in.tum.de/scannet_benchmark/scannet200_semantic_instance_3d">ScanNet200</a> and <a href="https://scannetpp.mlsg.cit.tum.de/scannetpp/benchmark/insseg?sortby=mean&amp;metric=ap">ScanNet++</a> test benchmark</span>
+          </div>
           <!-- <h1 class="title is-3">TPAMI 2025</h1> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -113,13 +117,25 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/SYSU-SAIL/POSITION"
+                <a href="https://github.com/SYSU-SAIL/ACGP"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
-                  </a>
+                </a>
+              </span>
+              <!-- Weights. Add the public model URL as href when released. -->
+              <span class="link-block">
+                <span class="button is-normal is-rounded is-dark weights-button" role="img" aria-label="Weights" title="Weights">
+                  <span class="icon">
+                    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                         alt="Hugging Face"
+                         style="width: 1em; height: 1em; object-fit: contain; vertical-align: middle; background-color: transparent;">
+                  </span>
+                  <span>Weights</span>
+                </span>
+              </span>
               <!-- Code Link. -->
               <!-- <span class="link-block">
                 <a href="https://github.com/Kristen-Z/StylizedGS-Jittor"
@@ -142,31 +158,61 @@
 
 
 <!-- Teaser. -->
-<!-- <section class="hero teaser">
+<section class="hero teaser project-content">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div>
-        <img src="static/images/acgp_teaser.png" alt="teaser" class="center">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered abstract-block">
+        <!-- <div class="column is-four-fifths"> -->
+        <div class="column is-full-width">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              3D instance segmentation aims to identify and segment individual object instances in complex 3D scenes, forming a key foundation for scene understanding and embodied interaction.
+              However, existing methods are typically trained on captured static scenes, where object categories are naturally tied to their surrounding contexts. This induces biased category--context associations:  most object categories are often coupled with limited scene contexts, with even narrower contextual coverage for underrepresented categories in long-tailed real-world distributions.
+              Consequently, models may overfit to frequent contexts and generalize poorly to uncommon object--scene layouts. To address this, we propose ACGP, an Adaptive Context- and Geometry-aware Instance Placement
+              framework for robust 3D instance segmentation. ACGP decouples instances from their source scenes and relocates them into diverse yet geometrically plausible target contexts, thereby enriching object--scene contexts beyond dataset-specific layout priors. Additionally, we further incorporate adaptive class-balanced sampling to increase the exposure of underrepresented categories during augmentation. Through efficient context- and geometry-aware placement, ACGP preserves plausible scene geometry and achieves over 300$\times$ faster instance insertion than conventional collision-detection-based methods. Extensive experiments on multiple 3D instance segmentation benchmarks and architectures show that ACGP consistently improves segmentation accuracy and robustness, especially under uncommon object--scene layouts. ACGP establishes new state-of-the-art results on both the ScanNet++ and ScanNet200 test benchmarks, achieving mAP scores of 38.8 and 38.1, respectively. Code is available at: https://github.com/SYSU-SAIL/ACGP
+            </p>
+          </div>
+        </div>
       </div>
-      <p>
-        Our open-world scene CAD recomposition method POSITION, which takes the captured real 3D scene data as its input, understands the scene semantic spatial layout, and retrieves CAD model from scalable assets to recomposite a high-fidelity 3D scene.
-      </p> 
+
+      <div class="project-section">
+        <h2 class="title is-3 has-text-centered"> Motivation</h2>
+        <figure class="project-figure">
+          <img src="static/images/acgp_teaser.png" alt="ACGP motivation" class="center">
+          <figcaption>
+            <strong>Motivation.</strong> Limited contextual diversity and long-tailed category distributions in static 3D scene datasets induce biased contextual priors, leading to contextual overfitting and failures in atypical out-of-context cases for 3d instance segmentation. ACGP decouples instances from their source scenes and adaptively relocates them into diverse yet geometrically plausible target contexts, thereby enriching object--scene contexts beyond dataset-specific layout priors.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="project-section">
+        <h2 class="title is-3 has-text-centered">Method Effectiveness</h2>
+        <div class="is-size-5 has-text-centered has-text-weight-bold effectiveness-points">
+          <span class="is-block">(a) Balancing category learning</span>
+          <span class="is-block">(b) Alleviating contextual overfitting</span>
+        </div>
+        <figure class="project-figure">
+          <img src="static/images/Method_effectiveness.png" alt="Method Effectiveness" class="center">
+        </figure>
+      </div>
 
     </div>
   </div>
-</section> -->
+</section>
 
 
 
 
 
-<section class="section">
+<section class="section pipeline-experiments">
   <div class="container is-max-desktop">
   <!-- <div class="container"> -->
   
     <!-- Paper video.
     <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
+      <div class="column is-full-width project-section pipeline-section">
         <br />
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
@@ -185,38 +231,18 @@
     <!--Overall Pipeline. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <br />
-        <h2 class="title is-3">Pipeline</h2>
+        <h2 class="title is-3">Overall Pipeline</h2>
           <img src="./static/images/framework.png" alt="method" style="width:100%; ">
         <div class="content has-text-justified">
           <p>
-             <strong>Overall framework of ACGP.</strong>.  Given a 3D scene and an instance database, ACGP selects instances via category-balanced sampling, queries their category-conditioned placement types, and places them at geometrically valid locations using occupancy- and support-aware validation to generate augmented scenes. \textbf{The pseudo-code} on the right summarizes the complete pipeline of instance-level augmented scene generation.
+             <strong>Overall framework of ACGP.</strong>.  Given a 3D scene and an instance database, ACGP selects instances via category-balanced sampling, queries their category-conditioned placement types, and places them at geometrically valid locations using occupancy- and support-aware validation to generate augmented scenes. <strong>The pseudo-code</strong> on the right summarizes the complete pipeline of instance-level augmented scene generation.
           </p>
         </div>
 
       </div>
     </div>
 
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <!-- <div class="column is-four-fifths"> -->
-      <div class="column is-full-width">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            3D instance segmentation aims to identify and segment individual object instances in complex 3D scenes, forming a key foundation for scene understanding and embodied interaction.
-            However, existing methods are typically trained on captured static scenes, where object categories are naturally tied to their surrounding contexts. This induces biased category--context associations:  most object categories are often coupled with limited scene contexts, with even narrower contextual coverage for underrepresented categories in long-tailed real-world distributions.
-            Consequently, models may overfit to frequent contexts and generalize poorly to uncommon object--scene layouts. To address this, we propose ACGP, an Adaptive Context- and Geometry-aware Instance Placement
-            framework for robust 3D instance segmentation. ACGP decouples instances from their source scenes and relocates them into diverse yet geometrically plausible target contexts, thereby enriching object--scene contexts beyond dataset-specific layout priors. Additionally, we further incorporate adaptive class-balanced sampling to increase the exposure of underrepresented categories during augmentation. Through efficient context- and geometry-aware placement, ACGP preserves plausible scene geometry and achieves over 300$\times$ faster instance insertion than conventional collision-detection-based methods. Extensive experiments on multiple 3D instance segmentation benchmarks and architectures show that ACGP consistently improves segmentation accuracy and robustness, especially under uncommon object--scene layouts. ACGP establishes new state-of-the-art results on both the ScanNet++ and ScanNet200 test benchmarks, achieving mAP scores of 38.8 and 38.1, respectively. Code is available at: https://github.com/SYSU-SAIL/ACGP
-          </p>
-        </div>
-      </div>
-    </div>
-
-    
-
-
-    <section class="section">
+    <!-- <section class="section">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-fifths-fifths">
@@ -229,17 +255,17 @@
           </div>
         </div>
       </div>
-    </section> 
+    </section>  -->
     
 
 
     
 
-<section class="hero is-light is-small">
-  <div class="hero-body" style="background-color: white;">
+<section class="hero is-light is-small experiments-header">
+  <div class="hero-body">
     <div class="columns is-centered has-text-centered">
       <div style="width:100%; text-align:center;">
-        <h2 class="title is-3">Results Gallery</h2>
+        <h2 class="title is-3">Experiments</h2>
       </div>
     </div>
   </div>
@@ -247,92 +273,13 @@
 
 
 
-<section class="hero is-light is-small">    <div class="hero-body" style="background-color: white;">               
-    <div class="container is-max-desktop">
-      
-    <div class="columns is-centered has-text-centered">
-        <div style="width:100%; text-align:center;">
-          <h3 class="title is-4">Ego-centric wandering in recomposed CAD scenes of KITTI360</h3>
-        </div>
-    </div>
-
-    <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-fifths-fifths">
-            <!-- <h2 class="title is-3">Comparison of Recomposition</h2> -->
-            <div class="publication-video-kitti360">
-              <video  loop muted playsinline controls style="width: 100%;">
-                <source src="static/videos/kitti360/0000000002_0000000385.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="publication-video-kitti360">
-              <video  loop muted playsinline controls style="width: 100%;">
-                <source src="static/videos/kitti360/0000000353_0000000557.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="publication-video-kitti360">
-              <video  loop muted playsinline controls style="width: 100%;">
-                <source src="static/videos/kitti360/0000000451_0000000633.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <br/>
-      <br/>
-      <div class="columns is-centered has-text-centered">
-        <div style="width:100%; text-align:center;">
-          <h3 class="title is-4">In the wild Test</h3>  
-        </div>
-    </div>
-
-    <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-fifths-fifths">
-            <!-- <h2 class="title is-3">Comparison of Recomposition</h2> -->
-            <div class="publication-video-embodied">
-              <video autoplay loop muted playsinline controls style="width: 100%;">
-                <source src="static/videos/articulation.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p> <strong>1. Simulated Scene for Articulated Interaction</strong> </p>
-            
-            <br/>
-            <div class="publication-video-embodied">
-              <video autoplay loop muted playsinline controls style="width: 100%;">
-                <source src="static/videos/navigation.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p> <strong>2. Simulated Scene for Embodied Navigation</strong> </p>
-            <br/>
-
-            <div class="publication-video">
-              <video autoplay loop muted playsinline controls style="width: 100%;">
-                <source src="static/videos/desktop.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p> <strong>3. POSITION integrates with HunYuan3D</strong></p>
-
-
-          </div>
-        </div>
-      </div>
-
-
-      
-      <!-- <h2 class="subtitle has-text-centered">Our results on forward-facing captures</h2> -->
-    </div>
-  </section>
-
 
 
   <!-- Visualization. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered result-block">
       <div class="column is-full-width">
-        <br />
-        <h2 class="title is-3">Visualization on the ScanNet++ Dataset</h2>
-          <img src="./static/images/scannetpp.png" alt="method" style="width:100%; ">
+        <h2 class="title is-4">ScanNet++ Test Benchmark Result</h2>
+          <img src="./static/images/scannetpp_benchmark.png" alt="method" style="width:100%; ">
         <div class="content has-text-justified">
           <p>
           </p>
@@ -342,11 +289,10 @@
     </div>
 
     <!-- Visualization. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered result-block">
       <div class="column is-full-width">
-        <br />
-        <h2 class="title is-3">Visualization on the Replica Dataset</h2>
-          <img src="./static/images/replica.png" alt="method" style="width:100%; ">
+        <h2 class="title is-4">ScanNet200 Test Benchmark Result</h2>
+          <img src="./static/images/scannet200_test_benchmark.png" alt="method" style="width:100%; ">
         <div class="content has-text-justified">
           <p>
           </p>
@@ -355,19 +301,17 @@
       </div>
     </div>
 
-    <div class="columns is-centered has-text-centered">
+    <!-- Qualitative Results. -->
+    <div class="columns is-centered has-text-centered result-block">
       <div class="column is-full-width">
-        <br />
-        <h2 class="title is-3">Visualization on the Scannet Dataset</h2>
-          <img src="./static/images/scannetv2.png" alt="method" style="width:100%; ">
+        <h2 class="title is-4">Qualitative Results</h2>
+        <img src="./static/images/qualitative_results.png" alt="Qualitative Results" style="width:100%; ">
         <div class="content has-text-justified">
           <p>
           </p>
         </div>
-
       </div>
     </div>
-  </div>
 </section>
 
   
@@ -561,17 +505,43 @@
 </section> -->
 
 
-<!-- <section class="section" id="BibTeX">
+<section class="section bibtex-section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@@article{zhang2024stylizedgs,
-  title={Stylizedgs: Controllable stylization for 3d gaussian splatting},
-  author={Zhang, Dingxi and Yuan, Yu-Jie and Chen, Zhuoxun and Zhang, Fang-Lue and He, Zhenliang and Shan, Shiguang and Gao, Lin},
-  journal={arXiv preprint arXiv:2404.05220},
-  year={2024}
+    <h2 class="title is-3">BibTeX</h2>
+    <div class="bibtex-wrapper">
+      <pre><code id="bibtex-code">@misc{yang2026acgp,
+  title  = {Beyond Context Bias: Adaptive Instance Placement for Robust 3D Instance Segmentation},
+  author = {Rongkun Yang, Ye Zhang, Longguang Wang, Zhiheng Fu, Ziru Yu, Yulan Guo},
+  year   = {2026},
+  url    = {https://github.com/SYSU-SAIL/ACGP}
 }</code></pre>
+      <button class="bibtex-copy-button" type="button" onclick="copyBibTeX()">
+        <span class="icon-text">
+          <span class="icon"><i class="far fa-copy" id="bibtex-copy-icon"></i></span>
+          <span id="bibtex-copy-label">Copy</span>
+        </span>
+      </button>
+    </div>
   </div>
-</section> -->
+</section>
+
+<script>
+  function copyBibTeX() {
+    const bibtex = document.getElementById('bibtex-code').innerText;
+    navigator.clipboard.writeText(bibtex).then(function () {
+      const icon = document.getElementById('bibtex-copy-icon');
+      const label = document.getElementById('bibtex-copy-label');
+      icon.classList.remove('far', 'fa-copy');
+      icon.classList.add('fas', 'fa-check');
+      label.textContent = 'Copied';
+      window.setTimeout(function () {
+        icon.classList.remove('fas', 'fa-check');
+        icon.classList.add('far', 'fa-copy');
+        label.textContent = 'Copy';
+      }, 1800);
+    });
+  }
+</script>
 
 
 <footer class="footer">
