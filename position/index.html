@@ -50,15 +50,23 @@
   <script src="./static/js/index.js"></script>
 </head>
 <body>
+<nav class="page-nav" aria-label="Page navigation">
+  <a class="nav-brand" href="#top">POSITION</a>
+  <div class="nav-links">
+    <a href="#abstract">Abstract</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#results">Results</a>
+  </div>
+</nav>
 
-
-
-<section class="hero">
+<main id="top">
+<section class="hero publication-hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">POSITION: Open World 3D Scene CAD Recomposition</h1>
+          <div class="venue-pill">Open-world 3D scene understanding</div>
+          <h1 class="title is-1 publication-title"><span>POSITION</span><small>Open World 3D Scene CAD Recomposition</small></h1>
           <!-- <h1 class="title is-3">TPAMI 2025</h1> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -127,6 +135,7 @@
                   </span>
                   <span>Code</span>
                   </a>
+              </span>
               <!-- Code Link. -->
               <!-- <span class="link-block">
                 <a href="https://github.com/Kristen-Z/StylizedGS-Jittor"
@@ -153,9 +162,9 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div>
-        <img src="../images/position.png" alt="teaser" class="center">
+        <img src="../images/position.png" alt="Overview of POSITION scene CAD recomposition" class="center" loading="eager">
       </div>
-      <p>
+      <p class="teaser-caption">
         Our open-world scene CAD recomposition method POSITION, which takes the captured real 3D scene data as its input, understands the scene semantic spatial layout, and retrieves CAD model from scalable assets to recomposite a high-fidelity 3D scene.
       </p> 
 
@@ -167,12 +176,12 @@
 
 
 
-<section class="section">
+<section class="section content-section" id="abstract">
   <div class="container is-max-desktop">
   <!-- <div class="container"> -->
   
     <!-- Paper video.
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered section-block">
       <div class="column is-full-width">
         <br />
         <h2 class="title is-3">Video</h2>
@@ -190,6 +199,7 @@
     <div class="columns is-centered has-text-centered">
       <!-- <div class="column is-four-fifths"> -->
       <div class="column is-full-width">
+        <p class="section-kicker">Overview</p>
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
@@ -205,11 +215,11 @@
     </div>
 
     <!-- Pipeline. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered section-block" id="pipeline">
       <div class="column is-full-width">
-        <br />
+        <p class="section-kicker">How it works</p>
         <h2 class="title is-3">Pipeline</h2>
-          <img src="./static/images/pipeline.png" alt="method" style="width:100%; ">
+          <div class="media-card"><img src="./static/images/pipeline.png" alt="POSITION method pipeline" loading="lazy"></div>
         <div class="content has-text-justified">
           <p>
              <strong>Method Overview</strong>. The captured 3D scene data is first analyzed by an ensemble of state-of-the-art open-world scene understanding models. Subsequently, the identified multi-modal instances undergo individual retrieval processing followed by a joint retrieval refinement stage. Finally, the retrieved CAD models are aligned to the targets in the scene with physically plausible pose optimization.
@@ -220,7 +230,7 @@
     </div>
 
 
-    <section class="section">
+    <section class="section demo-section">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-fifths-fifths">
@@ -239,8 +249,8 @@
 
     
 
-<section class="hero is-light is-small">
-  <div class="hero-body" style="background-color: white;">
+<section class="hero is-small gallery-heading" id="results">
+  <div class="hero-body">
     <div class="columns is-centered has-text-centered">
       <div style="width:100%; text-align:center;">
         <h2 class="title is-3">Results Gallery</h2>
@@ -251,12 +261,14 @@
 
 
 
-<section class="hero is-light is-small">    <div class="hero-body" style="background-color: white;">               
+<section class="hero is-small results-section">
+  <div class="hero-body">
     <div class="container is-max-desktop">
       
     <div class="columns is-centered has-text-centered">
         <div style="width:100%; text-align:center;">
-          <h3 class="title is-4">Ego-centric wandering in recomposed CAD scenes of KITTI360</h3>
+          <p class="section-kicker">Outdoor scenes</p>
+          <h3 class="title is-4">Ego-centric Wandering in Recomposed KITTI-360 Scenes</h3>
         </div>
     </div>
 
@@ -264,6 +276,7 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-fifths-fifths">
             <!-- <h2 class="title is-3">Comparison of Recomposition</h2> -->
+            <div class="kitti-grid">
             <div class="publication-video-kitti360">
               <video  loop muted playsinline controls style="width: 100%;">
                 <source src="static/videos/kitti360/0000000002_0000000385.mp4" type="video/mp4">
@@ -279,6 +292,7 @@
                 <source src="static/videos/kitti360/0000000451_0000000633.mp4" type="video/mp4">
               </video>
             </div>
+            </div>
           </div>
         </div>
       </div>
@@ -287,7 +301,8 @@
       <br/>
       <div class="columns is-centered has-text-centered">
         <div style="width:100%; text-align:center;">
-          <h3 class="title is-4">In the wild Test</h3>  
+          <p class="section-kicker">Generalization</p>
+          <h3 class="title is-4">In-the-Wild Tests</h3>
         </div>
     </div>
 
@@ -336,7 +351,7 @@
       <div class="column is-full-width">
         <br />
         <h2 class="title is-3">Visualization on the ScanNet++ Dataset</h2>
-          <img src="./static/images/scannetpp.png" alt="method" style="width:100%; ">
+          <div class="media-card"><img src="./static/images/scannetpp.png" alt="Results on the ScanNet++ dataset" loading="lazy"></div>
         <div class="content has-text-justified">
           <p>
           </p>
@@ -350,7 +365,7 @@
       <div class="column is-full-width">
         <br />
         <h2 class="title is-3">Visualization on the Replica Dataset</h2>
-          <img src="./static/images/replica.png" alt="method" style="width:100%; ">
+          <div class="media-card"><img src="./static/images/replica.png" alt="Results on the Replica dataset" loading="lazy"></div>
         <div class="content has-text-justified">
           <p>
           </p>
@@ -363,7 +378,7 @@
       <div class="column is-full-width">
         <br />
         <h2 class="title is-3">Visualization on the Scannet Dataset</h2>
-          <img src="./static/images/scannetv2.png" alt="method" style="width:100%; ">
+          <div class="media-card"><img src="./static/images/scannetv2.png" alt="Results on the ScanNet dataset" loading="lazy"></div>
         <div class="content has-text-justified">
           <p>
           </p>
@@ -578,17 +593,14 @@
 </section> -->
 
 
+</main>
 <footer class="footer">
   <div class="container">
 
     <div class="content has-text-centered">
-      <a class="icon-link"
-        href="">
-        <i class="fas fa-file-pdf"></i>
-      </a>
       <a class="icon-link" 
-        href="https://github.com/Kristen-Z" 
-        class="external-link" disabled>
+        href="https://github.com/SYSU-SAIL/POSITION"
+        aria-label="POSITION on GitHub">
         <i class="fab fa-github"></i>
       </a>
     </div>
