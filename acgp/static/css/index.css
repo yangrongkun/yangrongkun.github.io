@@ -302,14 +302,6 @@ html {
   box-shadow: 0 8px 20px rgba(31, 45, 61, 0.2);
 }
 
-.acgp-page .publication-links .weights-button,
-.acgp-page .publication-links .weights-button:hover {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  cursor: default;
-  transform: none;
-}
-
 .acgp-page .project-content .hero-body,
 .acgp-page .pipeline-experiments {
   padding: 3.75rem 1.5rem;
